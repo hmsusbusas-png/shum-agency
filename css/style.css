@@ -19,6 +19,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* sticky header перекрывает начало секции при переходе по якорю */
+  scroll-padding-top: 84px;
 }
 
 body {
