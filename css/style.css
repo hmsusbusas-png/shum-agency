@@ -193,6 +193,7 @@ a { color: inherit; }
 .hero__title {
   font-weight: 900;
   font-size: clamp(2.1rem, 6.2vw, 5.2rem);
+  line-height: 1.35;
   max-width: 20ch;
   margin-bottom: 28px;
 }
