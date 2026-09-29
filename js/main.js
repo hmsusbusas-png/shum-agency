@@ -129,7 +129,7 @@
     function validateName(input) {
       var value = input.value.trim();
       if (value.length < 2) {
-        setError(input, 'Введите имя — минимум 2 символа');
+        setError(input, 'Введите имя: минимум 2 символа');
         return false;
       }
       setError(input, '');

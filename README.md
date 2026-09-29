@@ -24,8 +24,8 @@ python -m http.server 8080
 - **Neo-brutalist UI kit** — buttons with hard shadows and press-down interaction, rotated sticker badges, outlined (`-webkit-text-stroke`) display headings
 - **CSS marquee** — infinite scrolling ticker ("САЙТЫ ✦ БРЕНДИНГ ✦ …"), zero JS
 - **Services accordion** — numbered rows with hover color inversion, single-open behavior, animated height
-- **Cases grid** — bordered cards with niche tags and result metrics (+140% leads, −38% CPL), hover shifts the shadow
-- **Animated counters** — stats (7 years, 120+ projects, 94% returning clients) count up on scroll via `IntersectionObserver`
+- **Cases grid** — bordered cards with sample result metrics, hover shifts the shadow
+- **Animated counters** — sample figures count up on scroll via `IntersectionObserver`
 - **Snappy scroll reveal** — fast translate-based entrance animations (not slow fades)
 - **Lead form** — client-side validation (name, phone/email, budget select), inline error messages, success state
 - **Responsive** — burger menu below 920px, grids collapse to one column on mobile

@@ -163,7 +163,7 @@ a { color: inherit; }
 /* ---------- Hero ---------- */
 
 .hero {
-  padding: 72px 0 88px;
+  padding: 88px 0;
   background:
     linear-gradient(var(--paper), var(--paper)) padding-box;
 }
@@ -184,23 +184,38 @@ a { color: inherit; }
   padding: 8px 16px;
   border: var(--border);
   box-shadow: 4px 4px 0 var(--ink);
+  transform: rotate(var(--sticker-rot, 0deg));
 }
 
-.sticker--acid  { background: var(--acid);  transform: rotate(-3deg); }
-.sticker--hot   { background: var(--hot);   transform: rotate(2deg); }
-.sticker--paper { background: var(--paper); transform: rotate(-1.5deg); }
+/* лёгкое «дрожание» при наведении — фирменная деталь */
+@keyframes sticker-wiggle {
+  0%, 100% { transform: rotate(var(--sticker-rot, 0deg)); }
+  25%      { transform: rotate(calc(var(--sticker-rot, 0deg) + 2.5deg)); }
+  75%      { transform: rotate(calc(var(--sticker-rot, 0deg) - 2.5deg)); }
+}
+
+.sticker:hover { animation: sticker-wiggle 0.32s ease-in-out; }
+
+.sticker--acid  { background: var(--acid);  --sticker-rot: -3deg; }
+.sticker--hot   { background: var(--hot);   --sticker-rot: 2deg; }
+.sticker--paper { background: var(--paper); --sticker-rot: -1.5deg; }
 
 .hero__title {
   font-weight: 900;
   font-size: clamp(2.1rem, 6.2vw, 5.2rem);
-  line-height: 1.35;
+  line-height: 1.5;
   max-width: 20ch;
   margin-bottom: 28px;
 }
-
 .outline {
   color: transparent;
+
   -webkit-text-stroke: 2.5px var(--ink);
+}
+
+/* на маленьких экранах обводка той же толщины съедает просветы букв */
+@media (max-width: 700px) {
+  .outline { -webkit-text-stroke-width: 1.4px; }
 }
 
 @supports not (-webkit-text-stroke: 2px black) {
@@ -304,10 +319,12 @@ a { color: inherit; }
 }
 
 .acc__num {
+  display: inline-block;
+  padding: 2px 8px;
   font-weight: 800;
   font-size: 1.3rem;
   color: var(--hot);
-  transition: color 0.12s ease;
+  transition: color 0.12s ease, background 0.12s ease, transform 0.12s ease, box-shadow 0.12s ease;
 }
 
 .acc__name {
@@ -341,7 +358,13 @@ a { color: inherit; }
   color: var(--paper);
 }
 
-.acc__head:hover .acc__num { color: var(--acid); }
+/* номер превращается в залитый квадрат и приподнимается */
+.acc__head:hover .acc__num {
+  color: var(--ink);
+  background: var(--acid);
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0 var(--hot);
+}
 
 .acc__head:hover .acc__icon {
   background: var(--paper);
@@ -826,8 +849,10 @@ a { color: inherit; }
 }
 
 @media (max-width: 700px) {
+  html, body { overflow-x: hidden; }
   .section { padding: 64px 0; }
-  .hero { padding: 48px 0 64px; }
+  .hero { padding: 64px 0; }
+  .hero__title { font-size: clamp(1.9rem, 7vw, 3rem); line-height: 1.55; }
   .cases { grid-template-columns: 1fr; }
   .acc__head { grid-template-columns: 44px 1fr 44px; }
   .acc__price { display: none; }
@@ -848,4 +873,5 @@ a { color: inherit; }
     transition: none;
   }
   .btn, .case, .step, .acc__body { transition: none; }
+  .sticker:hover { animation: none; }
 }
