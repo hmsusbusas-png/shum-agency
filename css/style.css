@@ -1,13 +1,8 @@
-/* ============================================================
-   ШУМ* — digital agency landing
-   Neo-brutalism: thick borders, hard offset shadows, flat fills
-   ============================================================ */
-
 :root {
-  --acid: #D9FF3D;
+  --acid: #E8F55A;
   --ink: #0A0A0A;
   --paper: #F4F1EA;
-  --hot: #FF5C39;
+  --hot: #F26430;
   --border: 3px solid var(--ink);
   --shadow: 6px 6px 0 var(--ink);
   --shadow-lg: 10px 10px 0 var(--ink);
@@ -19,7 +14,6 @@
 
 html {
   scroll-behavior: smooth;
-  /* sticky header перекрывает начало секции при переходе по якорю */
   scroll-padding-top: 84px;
 }
 
@@ -53,8 +47,6 @@ a { color: inherit; }
   outline: 3px solid var(--hot);
   outline-offset: 2px;
 }
-
-/* ---------- Buttons ---------- */
 
 .btn {
   display: inline-block;
@@ -91,8 +83,6 @@ a { color: inherit; }
 
 .btn--lg { padding: 18px 34px; font-size: 1.05rem; }
 .btn--sm { padding: 10px 18px; font-size: 0.8rem; box-shadow: 4px 4px 0 var(--ink); }
-
-/* ---------- Topbar ---------- */
 
 .topbar {
   position: sticky;
@@ -160,8 +150,6 @@ a { color: inherit; }
 .burger.is-open span:nth-child(2) { opacity: 0; }
 .burger.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-/* ---------- Hero ---------- */
-
 .hero {
   padding: 88px 0;
   background:
@@ -187,7 +175,6 @@ a { color: inherit; }
   transform: rotate(var(--sticker-rot, 0deg));
 }
 
-/* лёгкое «дрожание» при наведении — фирменная деталь */
 @keyframes sticker-wiggle {
   0%, 100% { transform: rotate(var(--sticker-rot, 0deg)); }
   25%      { transform: rotate(calc(var(--sticker-rot, 0deg) + 2.5deg)); }
@@ -207,8 +194,7 @@ a { color: inherit; }
   max-width: 20ch;
   margin-bottom: 28px;
 }
-/* выделенные слова — заливка-маркер, а не контур: контур на плотном
-   Unbounded превращается в шум и плохо читается */
+
 .outline {
   color: var(--ink);
   background: var(--acid);
@@ -219,8 +205,11 @@ a { color: inherit; }
 }
 
 .hero__text {
-  max-width: 56ch;
-  font-size: 1.15rem;
+  max-width: 60ch;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--ink);
   margin-bottom: 36px;
 }
 
@@ -229,8 +218,6 @@ a { color: inherit; }
   flex-wrap: wrap;
   gap: 18px;
 }
-
-/* ---------- Marquee ---------- */
 
 .marquee {
   overflow: hidden;
@@ -259,8 +246,6 @@ a { color: inherit; }
   to { transform: translateX(-50%); }
 }
 
-/* ---------- Sections ---------- */
-
 .section { padding: 88px 0; }
 .section--paper { background: var(--paper); }
 
@@ -283,8 +268,6 @@ a { color: inherit; }
   font-size: 1.05rem;
   color: #3c3a34;
 }
-
-/* ---------- Services accordion ---------- */
 
 .acc__item {
   border: var(--border);
@@ -348,13 +331,11 @@ a { color: inherit; }
   transition: transform 0.2s ease;
 }
 
-/* hover inversion */
 .acc__head:hover {
   background: var(--ink);
   color: var(--paper);
 }
 
-/* номер превращается в залитый квадрат и приподнимается */
 .acc__head:hover .acc__num {
   color: var(--ink);
   background: var(--acid);
@@ -362,8 +343,13 @@ a { color: inherit; }
   box-shadow: 3px 3px 0 var(--hot);
 }
 
+.acc__head:hover .acc__price {
+  color: var(--acid);
+}
+
 .acc__head:hover .acc__icon {
-  background: var(--paper);
+  background: var(--acid);
+  color: var(--ink);
 }
 
 .acc__item.is-open .acc__icon {
@@ -399,8 +385,6 @@ a { color: inherit; }
   border: 2px solid var(--ink);
   background: var(--acid);
 }
-
-/* ---------- Cases ---------- */
 
 .cases {
   display: grid;
@@ -468,8 +452,6 @@ a { color: inherit; }
   font-size: 0.95rem;
 }
 
-/* ---------- Approach ---------- */
-
 .steps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -512,8 +494,6 @@ a { color: inherit; }
 
 .step p { font-size: 0.95rem; color: #3c3a34; }
 
-/* ---------- Stats ---------- */
-
 .stats {
   background: var(--ink);
   color: var(--paper);
@@ -549,8 +529,6 @@ a { color: inherit; }
   letter-spacing: 0.05em;
 }
 
-/* ---------- Reviews ---------- */
-
 .reviews {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -584,8 +562,6 @@ a { color: inherit; }
   font-size: 0.88rem;
   color: #3c3a34;
 }
-
-/* ---------- Contact ---------- */
 
 .contact { background: var(--acid); }
 
@@ -626,8 +602,6 @@ a { color: inherit; }
 }
 
 .contact__list a:hover { background: var(--ink); color: var(--acid); }
-
-/* ---------- Form ---------- */
 
 .form {
   background: var(--paper);
@@ -728,8 +702,6 @@ a { color: inherit; }
 
 .form__success p { margin-bottom: 22px; }
 
-/* ---------- Footer ---------- */
-
 .footer {
   background: var(--ink);
   color: var(--paper);
@@ -792,8 +764,6 @@ a { color: inherit; }
   color: #b9b5aa;
 }
 
-/* ---------- Scroll reveal (fast, snappy) ---------- */
-
 .reveal {
   opacity: 0;
   transform: translateY(22px);
@@ -805,8 +775,6 @@ a { color: inherit; }
   opacity: 1;
   transform: translateY(0);
 }
-
-/* ---------- Responsive ---------- */
 
 @media (max-width: 1020px) {
   .steps { grid-template-columns: repeat(2, 1fr); }
@@ -857,8 +825,6 @@ a { color: inherit; }
   .stats__grid { grid-template-columns: 1fr 1fr; gap: 24px; }
   .footer__grid { grid-template-columns: 1fr; gap: 32px; }
 }
-
-/* ---------- Reduced motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

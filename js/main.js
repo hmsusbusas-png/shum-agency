@@ -1,8 +1,6 @@
-// ШУМ* — интерактив лендинга: меню, аккордеон, счётчики, reveal, валидация формы
 (function () {
   'use strict';
 
-  /* ---------- Мобильное меню ---------- */
   var burger = document.getElementById('burger');
   var nav = document.getElementById('nav');
 
@@ -22,7 +20,6 @@
     });
   }
 
-  /* ---------- Аккордеон услуг (одна открыта за раз) ---------- */
   var items = Array.prototype.slice.call(document.querySelectorAll('.acc__item'));
 
   function setBodyHeight(item, open) {
@@ -49,14 +46,12 @@
     });
   });
 
-  // пересчёт высоты открытой панели при ресайзе
   window.addEventListener('resize', function () {
     items.forEach(function (item) {
       if (item.classList.contains('is-open')) setBodyHeight(item, true);
     });
   });
 
-  /* ---------- Scroll reveal ---------- */
   var revealEls = document.querySelectorAll('.reveal');
 
   if ('IntersectionObserver' in window) {
@@ -74,7 +69,6 @@
     revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  /* ---------- Счётчики ---------- */
   function animateCounter(el) {
     var target = parseInt(el.getAttribute('data-target'), 10) || 0;
     var suffix = el.getAttribute('data-suffix') || '';
@@ -84,7 +78,6 @@
     function tick(ts) {
       if (!start) start = ts;
       var progress = Math.min((ts - start) / duration, 1);
-      // easeOutCubic — быстрый старт, мягкий финиш
       var eased = 1 - Math.pow(1 - progress, 3);
       el.textContent = Math.round(target * eased) + suffix;
       if (progress < 1) requestAnimationFrame(tick);
@@ -112,7 +105,6 @@
     });
   }
 
-  /* ---------- Валидация формы заявки ---------- */
   var form = document.getElementById('lead-form');
 
   if (form) {
@@ -163,7 +155,6 @@
     nameInput.addEventListener('blur', function () { validateName(nameInput); });
     contactInput.addEventListener('blur', function () { validateContact(contactInput); });
 
-    // ошибка снимается, как только пользователь начинает исправлять
     form.addEventListener('input', function (e) {
       var field = e.target.closest('.field');
       if (field && field.classList.contains('has-error')) setError(e.target, '');
@@ -178,7 +169,6 @@
       if (!okName) { nameInput.focus(); return; }
       if (!okContact) { contactInput.focus(); return; }
 
-      // Здесь мог бы быть fetch() на бэкенд — для демо просто показываем успех
       form.querySelector('.form__body').hidden = true;
       form.querySelector('.form__success').hidden = false;
       form.querySelector('.form__success').scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -195,7 +185,6 @@
     }
   }
 
-  /* ---------- Год в футере ---------- */
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 })();
